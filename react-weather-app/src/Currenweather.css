@@ -1,0 +1,41 @@
+.temp-display .active {
+    color: white;
+    cursor: default;
+  }
+  
+  .units {
+    font-size: 11px;
+    font-weight: 200;
+    line-height: 1.5;
+    text-align: left;
+    position: relative;
+    top: -21px;
+  }
+  
+  #weather-icon {
+    width: 70px;
+    height: auto;
+    position: relative;
+    top: -16px;
+  }
+  
+  #current-date {
+    font-size: 13px;
+    font-weight: lighter;
+    position: relative;
+    left: 6px;
+  }
+  
+  #current-city {
+    line-height: 25px;
+    font-size: 25px;
+    position: relative;
+    left: 15px;
+  }
+  
+  #current-temp {
+    font-size: 30px;
+    position: relative;
+    top: -8px;
+  }
+  
