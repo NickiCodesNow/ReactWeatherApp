@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
-import "./Forcastdays.css";
+import "./index.css";
+import "./Forecastdays.css";
 import Day from "./Day";
 
 export default function Forcastdays() {

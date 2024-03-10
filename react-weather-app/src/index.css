@@ -1,6 +1,6 @@
 .WeatherApp {
   background-size: cover;
-  background-image: url("../images/sun.jpg");
+  background-image: url("../public/images/sun.jpg");
 }
 
 a {

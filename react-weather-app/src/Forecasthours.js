@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
-import "./Forcasthours.css";
+import "./index.css";
+import "./Forecasthours.css";
 import Hour from "./Hour";
 
 export default function Forcasthours() {

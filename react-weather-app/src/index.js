@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+import Searchbar from "./Searchbar";
+import Currentweather from "./Currentweather";
+import Forecasthours from "./Forecasthours";
+import Forecastdays from "./Forecastdays";
+import Footer from "./Footer";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -12,10 +18,10 @@ root.render(
         <Currentweather />
       </div>
       <div className="card today">
-        <Forcasthours />
+        <Forecasthours />
       </div>
       <div className="card week">
-        <Forcastdays />
+        <Forecastdays />
       </div>
       <Footer />
     </div>
