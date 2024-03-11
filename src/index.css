@@ -7,14 +7,14 @@ a {
   text-decoration: none;
 }
 
-ul {
+.Weather ul {
   list-style-type: none;
   line-height: 0.5;
   text-align: left;
   position: relative;
   left: -30px;
 }
-.WeatherApp .card {
+.Weather .card {
   background-color: rgba(243, 237, 237, 0.4);
 }
 
