@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import Searchbar from "./Searchbar";
 import Currentweather from "./Currentweather";
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div className="WeatherApp">
+      <div className="container">
       <div className="card now">
         <Searchbar />
         <Currentweather />
@@ -24,6 +26,7 @@ root.render(
         <Forecastdays />
       </div>
       <Footer />
+      </div>
     </div>
   </React.StrictMode>
 );
