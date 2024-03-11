@@ -18,13 +18,13 @@ export default function Currentweather() {
           <img src="../images/Cloud.png" alt="Clear" id="weather-icon" />
           <span id="current-temp">18 </span>
           <span className="units">
-            <a href="#" id="celsius-link" className="active">
-              °C{" "}
-            </a>{" "}
-            |
-            <a href="#" id="fahrenheit-link" style={{ textDecoration: "none" }}>
-              °F{" "}
-            </a>
+          <button type="button" className="link-button active" id="celsius-link">
+            °C{" "}
+          </button>
+          {" "} |{" "}
+          <button type="button" className="link-button active" id="fahrenheit-link" style={{ textDecoration: "none" }}>
+          °F{" "}
+          </button>
           </span>
         </div>
       </div>
