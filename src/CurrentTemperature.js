@@ -23,7 +23,7 @@ export default function CurrentTemperature (props){
             <div className="Currenttemperature">
                 <span id="current-temp">{props.tempdata} </span>
                 <span className="units">
-                    <a href="/"  className="active" id="celsius-link" style={{ textDecoration: "none" }}>
+                    <a href="/"  className="active" id="celsius-link">
                     °C{" "} 
                     </a>
                     {" "} |{" "}
@@ -42,7 +42,7 @@ export default function CurrentTemperature (props){
                     °C{" "}
                     </a>
                     {" "} |{" "}
-                    <a href="/"  className="active" id="fahrenheit-link" style={{ textDecoration: "none" }}>
+                    <a href="/"  className="active" id="fahrenheit-link">
                     °F{" "}
                     </a>
                 </span>

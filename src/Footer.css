@@ -5,4 +5,8 @@
     color: white;
     background-color: black;
   }
+
+  .Footer a {
+    text-decoration: none;
+  }
   

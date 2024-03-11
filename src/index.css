@@ -3,10 +3,6 @@
   background-image: url("../public/images/sun.jpg");
 }
 
-a {
-  text-decoration: none;
-}
-
 .Weather ul {
   list-style-type: none;
   line-height: 0.5;
