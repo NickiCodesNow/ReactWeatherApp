@@ -12,14 +12,8 @@
     top: -21px;
   }
 
-  .link-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
+  div.Currenttemperature  {
     display: inline;
-    margin: 0;
-    padding: 0;
   }
   
   #weather-icon {

@@ -3,6 +3,7 @@ import "./index.css";
 import "./Currentweather.css";
 
 import Formatteddate from "./Formatteddate";
+import CurrentTemperature from "./CurrentTemperature";
 
 export default function Currentweather(props) {
   return (
@@ -18,16 +19,7 @@ export default function Currentweather(props) {
       <div className="temp-display">
         <div className="weather-picture">
           <img src={props.apiData.iconUrl} alt={props.apiData.description} id="weather-icon" />
-          <span id="current-temp">{props.apiData.temp} </span>
-          <span className="units">
-            <button type="button" className="link-button active" id="celsius-link">
-              °C{" "}
-            </button>
-            {" "} |{" "}
-            <button type="button" className="link-button active" id="fahrenheit-link" style={{ textDecoration: "none" }}>
-            °F{" "}
-            </button>
-          </span>
+          <CurrentTemperature tempdata={props.apiData.temp} />
         </div>
       </div>
     </div>
