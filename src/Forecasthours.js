@@ -3,7 +3,6 @@ import "./index.css";
 import "./Forecasthours.css";
 import Hour from "./Hour";
 
-
 export default function Forcasthours() {
   return (
     <div className="card-body">

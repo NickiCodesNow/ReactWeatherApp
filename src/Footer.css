@@ -1,12 +1,11 @@
 .Footer {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-    color: white;
-    background-color: black;
-  }
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  background-color: black;
+}
 
-  .Footer a {
-    text-decoration: none;
-  }
-  
+.Footer a {
+  text-decoration: none;
+}

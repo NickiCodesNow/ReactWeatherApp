@@ -1,10 +1,9 @@
 #search-bar {
-    position: relative;
-    width: 100%;
-  }
-  
-  #current-Location-button {
-    color: white;
-    background-color: rgba(51, 124, 178, 0.5);
-  }
-  
+  position: relative;
+  width: 100%;
+}
+
+#current-Location-button {
+  color: white;
+  background-color: rgba(51, 124, 178, 0.5);
+}
