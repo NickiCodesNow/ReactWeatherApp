@@ -1,32 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import "./Forecastdays.css";
 import Day from "./Day";
 
 import axios from "axios";
 
-export default function Forcastdays(props) {
-  let lat = props.coords.lat;
-  let lon = props.coords.lon;
-  const apiKey = "445905dadb3d2b0c6f1b916c9d0e3860";
-  const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(handleResponse);
+export default function Forecastdays(props) {
+  let [hasResponse, setHasResponse] = useState(false);
+  let [forecastData, setForecastData] = useState(null);
+
+  useEffect(() => {
+    setHasResponse(false);
+  }, [props.coords]);
 
   function handleResponse(response) {
-    console.log(response);
+    setHasResponse(true);
+    setForecastData(response.data.daily);
   }
 
-  return (
-    <div className="card-body">
-      <h3>Next Days</h3>
-      <div className="row prediction-week" id="forecast-daily">
-        <Day temp={20} day="Thu" />
-        <Day temp={17} day="Fri" />
-        <Day temp={18} day="Sat" />
-        <Day temp={19} day="Sun" />
-        <Day temp={21} day="Mon" />
-        <Day temp={22} day="Tue" />
+  if (hasResponse) {
+    return (
+      <div className="card-body">
+        <h3>Next Days</h3>
+        <div className="row prediction-week" id="forecast-daily">
+          {forecastData.map(function (dailyForecast, index) {
+            if (index > 0 && index < 7) {
+              return (
+                <div className="col-2" key={index}>
+                  <Day forecastData={dailyForecast} />
+                </div>
+              );
+            }
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let lat = props.coords.lat;
+    let lon = props.coords.lon;
+    const apiKey = "62231151ce343c4d68652e1617efc22f";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+
+    axios.get(apiUrl).then(handleResponse);
+
+    return null;
+  }
 }
