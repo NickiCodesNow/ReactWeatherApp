@@ -15,10 +15,42 @@ export default function Weather() {
   let [city, setCity] = useState("Berlin");
   let [weatherData, setWeatherData] = useState({ hasResponse: false });
 
-  function callAPI() {
+  const getCurrentLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          callAPIByCoordinates(latitude, longitude);
+        },
+        (error) => {
+          console.error("Geolocation is not allowed.");
+        }
+      );
+    } else {
+      alert("Geolocation is not available in this browser.");
+    }
+  };
+
+  function callAPIByCoordinates(lat, lon) {
     const apiKey = "445905dadb3d2b0c6f1b916c9d0e3860";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    try {
+      axios.get(apiUrl).then(handleResponse);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  }
+
+  function callAPIByCity() {
+    const apiKey = "445905dadb3d2b0c6f1b916c9d0e3860";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    try {
+      axios.get(apiUrl).then(handleResponse);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
   }
 
   function handleResponse(response) {
@@ -36,7 +68,7 @@ export default function Weather() {
 
   function handleSearchSubmit(event) {
     event.preventDefault();
-    callAPI();
+    callAPIByCity();
   }
 
   function updateCity(event) {
@@ -51,6 +83,7 @@ export default function Weather() {
             <Searchbar
               changeEvent={updateCity}
               submitEvent={handleSearchSubmit}
+              searchLocationEvent={getCurrentLocation}
             />
             <Currentweather apiData={weatherData} />
           </div>
@@ -65,7 +98,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    callAPI();
+    callAPIByCity();
     return "Loading...";
   }
 }

@@ -26,6 +26,7 @@ export default function Searchbar(props) {
             className="btn btn-outline-secondary"
             type="submit"
             id="current-Location-button"
+            onClick={props.searchLocationEvent}
           >
             Current Location
           </button>
