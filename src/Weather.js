@@ -18,6 +18,8 @@ export default function Weather() {
   let [weatherData, setWeatherData] = useState({ hasResponse: false });
   const [unit, setUnit] = useState("C"); // "C" for Celsius, "F" for Fahrenheit
 
+  const backgroundImage = require(`../public/images/${weatherData.icon}.jpg`);
+
   const getCurrentLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -85,7 +87,10 @@ export default function Weather() {
   if (weatherData.hasResponse) {
     return (
       <TemperatureUnitContext.Provider value={{ unit, setUnit }}>
-        <div className="Weather">
+        <div
+          className="Weather"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        >
           <div className="container">
             <div className="card now">
               <Searchbar

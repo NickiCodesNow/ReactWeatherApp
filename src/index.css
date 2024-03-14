@@ -1,6 +1,8 @@
-.WeatherApp {
+.Weather {
   background-size: cover;
-  background-image: url("../public/images/sun.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
 }
 
 .Weather ul {

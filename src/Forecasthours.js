@@ -34,7 +34,6 @@ export default function Forcasthours(props) {
   function handleResponse(response) {
     setHasResponse(true);
     setForecastData(response.data.hourly);
-    console.log(response.data.hourly);
   }
 
   if (hasResponse) {
