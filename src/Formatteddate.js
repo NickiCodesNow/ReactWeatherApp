@@ -10,7 +10,15 @@ export default function Formatteddate(props) {
     "Friday",
     "Saturday",
   ];
-  let day = days[props.date.getDay()];
+  let dayName = days[props.date.getDay()];
+
+  let day = props.date.getDate();
+
+  let month = props.date.getMonth() + 1;
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  let year = props.date.getFullYear();
 
   let hours = props.date.getHours();
   if (hours < 10) {
@@ -22,9 +30,15 @@ export default function Formatteddate(props) {
     minutes = `0${minutes}`;
   }
 
+  const options = { timeZone: props.timezone, timeZoneName: "short" };
+  const formatter = new Intl.DateTimeFormat("en-US", options);
+  const timezone = formatter.resolvedOptions().timeZone;
+
   return (
     <div className="formattedDate">
-      {day}, {hours}:{minutes}
+      {dayName}, {day}.{month}.{year}
+      <br />
+      {hours}:{minutes} ({timezone})
     </div>
   );
 }

@@ -65,6 +65,7 @@ export default function Weather() {
       city: response.data.name,
       temp: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
+      timezone: response.data.timezone,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,

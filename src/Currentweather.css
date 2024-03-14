@@ -1,4 +1,4 @@
-.temp-display .active {
+.Currenttemperature .active {
   color: white;
   cursor: default;
   font-weight: bold;
@@ -19,6 +19,10 @@
 
 div.Currenttemperature {
   display: inline;
+}
+
+.temp-display {
+  padding-top: 15px;
 }
 
 #weather-icon {
