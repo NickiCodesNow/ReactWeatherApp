@@ -27,6 +27,9 @@ export default function Weather() {
         },
         (error) => {
           console.error("Geolocation is not allowed.");
+          alert(
+            "Geolocation is not activated. To use this feature, please activate it in your browser settings."
+          );
         }
       );
     } else {
