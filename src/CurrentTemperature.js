@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+
+import { TemperatureUnitContext } from "./TemperatureUnitContext";
 
 export default function CurrentTemperature(props) {
-  let [units, setUnits] = useState("celsius");
+  const { unit, setUnit } = useContext(TemperatureUnitContext);
 
   function showCelcius(event) {
     event.preventDefault();
-    setUnits("celsius");
+    setUnit("C");
   }
 
   function showFahrenheit(event) {
     event.preventDefault();
-    setUnits("fahrenheit");
+    setUnit("F");
   }
 
   function calculateFahrenheit() {
     return Math.round((props.tempdata * 9) / 5 + 32);
   }
 
-  if (units === "celsius") {
+  if (unit === "C") {
     return (
       <div className="Currenttemperature">
         <span id="current-temp">{props.tempdata} </span>

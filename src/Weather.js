@@ -11,9 +11,12 @@ import Forecasthours from "./Forecasthours";
 import Forecastdays from "./Forecastdays";
 import Footer from "./Footer";
 
+import { TemperatureUnitContext } from "./TemperatureUnitContext";
+
 export default function Weather() {
   let [city, setCity] = useState("Berlin");
   let [weatherData, setWeatherData] = useState({ hasResponse: false });
+  const [unit, setUnit] = useState("C"); // "C" for Celsius, "F" for Fahrenheit
 
   const getCurrentLocation = () => {
     if ("geolocation" in navigator) {
@@ -77,25 +80,27 @@ export default function Weather() {
 
   if (weatherData.hasResponse) {
     return (
-      <div className="Weather">
-        <div className="container">
-          <div className="card now">
-            <Searchbar
-              changeEvent={updateCity}
-              submitEvent={handleSearchSubmit}
-              searchLocationEvent={getCurrentLocation}
-            />
-            <Currentweather apiData={weatherData} />
+      <TemperatureUnitContext.Provider value={{ unit, setUnit }}>
+        <div className="Weather">
+          <div className="container">
+            <div className="card now">
+              <Searchbar
+                changeEvent={updateCity}
+                submitEvent={handleSearchSubmit}
+                searchLocationEvent={getCurrentLocation}
+              />
+              <Currentweather apiData={weatherData} />
+            </div>
+            <div className="card today">
+              <Forecasthours />
+            </div>
+            <div className="card week">
+              <Forecastdays coords={weatherData.coordinates} />
+            </div>
+            <Footer />
           </div>
-          <div className="card today">
-            <Forecasthours />
-          </div>
-          <div className="card week">
-            <Forecastdays coords={weatherData.coordinates} />
-          </div>
-          <Footer />
         </div>
-      </div>
+      </TemperatureUnitContext.Provider>
     );
   } else {
     callAPIByCity();

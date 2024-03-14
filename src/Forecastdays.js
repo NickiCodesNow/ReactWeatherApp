@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./index.css";
 import "./Forecastdays.css";
 import Day from "./Day";
 
 import axios from "axios";
 
+import { TemperatureUnitContext } from "./TemperatureUnitContext";
+
 export default function Forecastdays(props) {
   let [hasResponse, setHasResponse] = useState(false);
   let [forecastData, setForecastData] = useState(null);
+  const { unit } = useContext(TemperatureUnitContext);
 
   useEffect(() => {
-    if (props.coords) {
+    if (props.coords && unit) {
       const lat = props.coords.lat;
       const lon = props.coords.lon;
+      const units = unit === "C" ? "metric" : "imperial";
+
       const apiKey = "62231151ce343c4d68652e1617efc22f";
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=${units}&appid=${apiKey}`;
 
       axios
         .get(apiUrl)
@@ -24,7 +29,7 @@ export default function Forecastdays(props) {
           setHasResponse(false);
         });
     }
-  }, [props.coords]);
+  }, [props.coords, unit]);
 
   function handleResponse(response) {
     setHasResponse(true);
