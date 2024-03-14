@@ -95,7 +95,7 @@ export default function Weather() {
               <Currentweather apiData={weatherData} />
             </div>
             <div className="card today">
-              <Forecasthours />
+              <Forecasthours coords={weatherData.coordinates} />
             </div>
             <div className="card week">
               <Forecastdays coords={weatherData.coordinates} />

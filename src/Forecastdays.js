@@ -40,7 +40,7 @@ export default function Forecastdays(props) {
     return (
       <div className="card-body">
         <h3>Next Days</h3>
-        <div className="row prediction-week" id="forecast-daily">
+        <div className="row prediction-week">
           {forecastData.slice(1, 7).map((dailyForecast, index) => (
             <div className="col-2" key={index}>
               <Day forecastData={dailyForecast} />
