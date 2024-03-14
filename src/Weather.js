@@ -13,12 +13,14 @@ import Footer from "./Footer";
 
 import { TemperatureUnitContext } from "./TemperatureUnitContext";
 
+import defaultBackgroundImage from "./images/sun.jpg";
+
 export default function Weather() {
   let [city, setCity] = useState("Berlin");
   let [weatherData, setWeatherData] = useState({ hasResponse: false });
-  const [unit, setUnit] = useState("C"); // "C" for Celsius, "F" for Fahrenheit
+  const [unit, setUnit] = useState("C");
 
-  const backgroundImage = require(`../public/images/${weatherData.icon}.jpg`);
+  let [backgroundImage, setBackgroundImage] = useState(defaultBackgroundImage);
 
   const getCurrentLocation = () => {
     if ("geolocation" in navigator) {
@@ -73,6 +75,9 @@ export default function Weather() {
       iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       coordinates: response.data.coord,
     });
+    setBackgroundImage(
+      require(`../public/images/${response.data.weather[0].icon}.jpg`)
+    );
   }
 
   function handleSearchSubmit(event) {
